@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 // import logo from './logo.svg';
 import './App.css';
+import PropTypes from 'prop-types';
 
 const DEFAULT_QUERY = 'hackernews';
 const DEFAULT_HPP = '10';
@@ -155,42 +156,64 @@ const Search = ({
                   onChange,
                   onSubmit,
                   children
-                })  => <form onSubmit={onSubmit}>
-                          <input type="text" value={value} onChange={onChange} />
-                          <button type="submit">
-                            {children}
-                          </button>
-                        </form>
+                })  => 
+  <form onSubmit={onSubmit}>
+    <input type="text" value={value} onChange={onChange} />
+    <button type="submit">
+      {children}
+    </button>
+  </form>
+  Search.PropTypes = {
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    children: PropTypes.node.isRequired,
+  };
 
-const Table = ( {list, /*pattern, */onDismiss})=>{
-    return (
-        <div>
-          {
-            list/* .filter(isSerched(pattern))*/.map(item=>
-                <div key={item.objectID}>
-                  <span><a href={item.url}>{item.title} </a></span> 
-                  <span>{item.author} </span> 
-                  <span>{item.num_comments} </span> 
-                  <span>{item.points} </span> 
-                  <span>
-                    <Button onClick={()=>onDismiss(item.objectID)} >Dismiss</Button>
-                  </span>
-                </div>
-            )
-          }
-                  <hr></hr>
-        </div>
-    );
+const Table = ({
+                  list, 
+                  /*pattern, */
+                  onDismiss
+              })=>
+  <div>
+    {
+      list/* .filter(isSerched(pattern))*/.map(item=>
+          <div key={item.objectID}>
+            <span><a href={item.url}>{item.title} </a></span> 
+            <span>{item.author} </span> 
+            <span>{item.num_comments} </span> 
+            <span>{item.points} </span> 
+            <span>
+              <Button onClick={()=>onDismiss(item.objectID)} >Dismiss</Button>
+            </span>
+          </div>
+      )
+    }
+    <hr></hr>
+  </div>
+  Table.PropTypes = {
+    list: PropTypes.arrayOf(
+      PropTypes.shape({
+        objectID: PropTypes.string.isRequired,
+        author: PropTypes.string,
+        url: PropTypes.string,
+        num_comments: PropTypes.number,
+        points: PropTypes.number,
+      })
+    ).isRequired, 
+    onDismiss: PropTypes.func.isRequired,
+  }
   
-}
-const Button = ({onClick, className='', children})=> {
-
-    return (
-      <button onClick={onClick} className={className} type="button" >
-        {children}
-      </button>
-    );
   
-}
-
+const Button = ({onClick, className, children})=> 
+  <button onClick={onClick} className={className} type="button" >
+    {children}
+  </button>
+  Button.propTypes = {
+    onClick: PropTypes.func.isRequired,
+    className: PropTypes.string,
+    children: PropTypes.node.isRequired,
+  };
+  
+export {Search, Button, Table};
 export default App;

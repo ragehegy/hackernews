@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App has a valid snapshot 1`] = `
+<div
+  className="App"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onChange={[Function]}
+      type="text"
+      value="hackernews"
+    />
+    <button
+      type="submit"
+    >
+      Search 
+    </button>
+  </form>
+  <button
+    className=""
+    onClick={[Function]}
+    type="button"
+  >
+    More
+  </button>
+</div>
+`;
+
+exports[`Button has a valid snapshot 1`] = `
+<button
+  className=""
+  type="button"
+>
+  Gimme more
+</button>
+`;
+
+exports[`Search has a valid snapshot 1`] = `
+<form>
+  <input
+    type="text"
+  />
+  <button
+    type="submit"
+  >
+    Search
+  </button>
+</form>
+`;
+
+exports[`Table has a valid snapshot 1`] = `
+<div>
+  <div>
+    <span>
+      <a>
+        1
+         
+      </a>
+    </span>
+    <span>
+      1
+       
+    </span>
+    <span>
+      1
+       
+    </span>
+    <span>
+      2
+       
+    </span>
+    <span>
+      <button
+        className=""
+        onClick={[Function]}
+        type="button"
+      >
+        Dismiss
+      </button>
+    </span>
+  </div>
+  <div>
+    <span>
+      <a>
+        2
+         
+      </a>
+    </span>
+    <span>
+      2
+       
+    </span>
+    <span>
+      1
+       
+    </span>
+    <span>
+      2
+       
+    </span>
+    <span>
+      <button
+        className=""
+        onClick={[Function]}
+        type="button"
+      >
+        Dismiss
+      </button>
+    </span>
+  </div>
+  <hr />
+</div>
+`;
